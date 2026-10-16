@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="FootballHub Pro brings you football fixtures, results, league tables and club information.">
+<meta name="theme-color" content="#07130f">
+
+<title>FootballHub Pro | The Home of Football</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+<body><header class="topbar">
+    <a class="brand" href="/" aria-label="FootballHub home">
+        <span class="brand-icon">⚽</span>
+        <span>Football<span class="brand-accent">Hub</span><small>PRO</small></span>
+    </a><button class="menu-toggle" id="menuToggle"
+    aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+<nav class="navigation" id="navigation">
+    <a href="#home">Home</a>
+    <a href="#fixtures">Fixtures</a>
+    <a href="#standings">League Tables</a>
+    <a href="#teams">Teams</a>
+    <a href="#news">News</a>
+</nav>
+
+</header><main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="eyebrow">YOUR FOOTBALL. YOUR WORLD.</span>        <h1>EVERY MATCH.<br>
+            <span>EVERY MOMENT.</span>
+        </h1>
+
+        <p>Fixtures, results, league standings and the clubs
+            you love, all in one place.</p>
+
+        <div class="hero-actions">
+            <a class="button button-primary" href="#fixtures">
+                Explore Matches →
+            </a>
+            <a class="button button-outline" href="#standings">
+                View Tables
+            </a>
+        </div>
+
+        <div class="hero-stats">
+            <div><strong>LIVE</strong><span>Match updates</span></div>
+            <div><strong>GLOBAL</strong><span>Football coverage</span></div>
+            <div><strong>ALL IN ONE</strong><span>Your football hub</span></div>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1100&q=85"
+            alt="Football stadium ready for a match"
+            fetchpriority="high">
+        <div class="image-label">
+            <span class="status-dot"></span>
+            YOUR FOOTBALL DESTINATION
+        </div>
+    </div>
+</section>
+
+<section class="section match-section" id="fixtures">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">MATCH CENTRE</span>
+            <h2>Fixtures & Results</h2>
+            <p>Follow upcoming matches and completed games.</p>
+        </div>
+
+        <button class="button button-outline small-button"
+            id="refreshMatches">↻ Refresh</button>
+    </div>
+
+    <div class="toolbar">
+        <label for="matchCompetition">Competition</label>
+        <select id="matchCompetition">
+            <option value="PL">Premier League</option>
+            <option value="PD">La Liga</option>
+            <option value="BL1">Bundesliga</option>
+            <option value="SA">Serie A</option>
+            <option value="FL1">Ligue 1</option>
+            <option value="CL">Champions League</option>
+        </select>
+
+        <div class="match-filters" id="matchFilters">
+            <button class="filter-button active" data-filter="ALL">All</button>
+            <button class="filter-button" data-filter="LIVE">Live</button>
+            <button class="filter-button" data-filter="SCHEDULED">Upcoming</button>
+            <button class="filter-button" data-filter="FINISHED">Results</button>
+        </div>
+    </div>
+
+    <div id="matchDate" class="muted match-date"></div>
+    <div id="matches" class="match-grid">
+        <div class="loading-card">Loading football matches...</div>
+    </div>
+
+    <p class="data-note" id="matchNote">
+        Match availability depends on your football data provider.
+    </p>
+</section>
+
+<section class="section standings-section" id="standings">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">THE RACE FOR GLORY</span>
+            <h2>League Tables</h2>
+            <p>Check the latest available league standings.</p>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <label for="tableCompetition">Competition</label>
+        <select id="tableCompetition">
+            <option value="PL">Premier League</option>
+            <option value="PD">La Liga</option>
+            <option value="BL1">Bundesliga</option>
+            <option value="SA">Serie A</option>
+            <option value="FL1">Ligue 1</option>
+            <option value="CL">Champions League</option>
+        </select>
+    </div>
+
+    <div id="tableTitle" class="table-title">Premier League</div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Club</th>
+                    <th>MP</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GD</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody id="standingsBody">
+                <tr><td colspan="8" class="empty-cell">
+                    Loading league table...
+                </td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="data-note" id="tableNote">
+        Standings are provided by the football data API.
+    </p>
+</section>
+
+<section class="section teams-section" id="teams">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">THE BIG CLUBS</span>
+            <h2>Explore Teams</h2>
+            <p>Search for a club and explore its football identity.</p>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input type="search" id="teamSearch"
+            placeholder="Search Arsenal, Barcelona, Liverpool..."
+            aria-label="Search football teams">
+    </div>
+
+    <div class="team-grid" id="teamGrid">
+        <article class="team-card" data-name="arsenal">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t3.png"
+                alt="Arsenal badge" loading="lazy">
+            <h3>Arsenal</h3>
+            <p>England · Premier League</p>
+        </article>
+
+        <article class="team-card" data-name="barcelona fc barcelona">
+            <img src="https://crests.football-data.org/81.png"
+                alt="Barcelona badge" loading="lazy">
+            <h3>Barcelona</h3>
+            <p>Spain · La Liga</p>
+        </article>
+
+        <article class="team-card" data-name="real madrid">
+            <img src="https://crests.football-data.org/86.png"
+                alt="Real Madrid badge" loading="lazy">
+            <h3>Real Madrid</h3>
+            <p>Spain · La Liga</p>
+        </article>
+
+        <article class="team-card" data-name="manchester united">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t1.png"
+                alt="Manchester United badge" loading="lazy">
+            <h3>Manchester United</h3>
+            <p>England · Premier League</p>
+        </article>
+
+        <article class="team-card" data-name="manchester city">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t43.png"
+                alt="Manchester City badge" loading="lazy">
+            <h3>Manchester City</h3>
+            <p>England · Premier League</p>
+        </article>
+
+        <article class="team-card" data-name="liverpool">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t14.png"
+                alt="Liverpool badge" loading="lazy">
+            <h3>Liverpool</h3>
+            <p>England · Premier League</p>
+        </article>
+
+        <article class="team-card" data-name="chelsea">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t8.png"
+                alt="Chelsea badge" loading="lazy">
+            <h3>Chelsea</h3>
+            <p>England · Premier League</p>
+        </article>
+
+        <article class="team-card" data-name="tottenham hotspur">
+            <img src="https://resources.premierleague.com/premierleague/badges/50/t6.png"
+                alt="Tottenham badge" loading="lazy">
+            <h3>Tottenham Hotspur</h3>
+            <p>England · Premier League</p>
+        </article>
+    </div>
+
+    <p id="noTeams" class="empty-cell hidden">No matching teams found.</p>
+</section>
+
+<section class="news-section" id="news">
+    <div class="section">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">BEYOND THE FINAL WHISTLE</span>
+                <h2>Football Stories</h2>
+                <p>Make FootballHub your destination for the beautiful game.</p>
+            </div>
+        </div>
+
+        <div class="news-grid">
+            <article class="news-card">
+                <img
+                    src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=700&q=80"
+                    alt="Football pitch" loading="lazy">
+                <div class="news-content">
+                    <span class="news-category">MATCHDAY</span>
+                    <h3>Every Match Has a Story</h3>
+                    <p>Follow the fixtures, results and moments that shape the season.</p>
+                    <a href="#fixtures">Explore matches →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img
+                    src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=700&q=80"
+                    alt="Football action" loading="lazy">
+                <div class="news-content">
+                    <span class="news-category">THE BIG PICTURE</span>
+                    <h3>The Race for the Title</h3>
+                    <p>Use league standings to follow the battle for the top spot.</p>
+                    <a href="#standings">View standings →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img
+                    src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=700&q=80"
+                    alt="Football stadium" loading="lazy">
+                <div class="news-content">
+                    <span class="news-category">FOOTBALL CULTURE</span>
+                    <h3>More Than a Game</h3>
+                    <p>Discover the teams and competitions that unite football fans.</p>
+                    <a href="#teams">Explore teams →</a>
+                </div>
+            </article>
+        </div>
+
+        <p class="data-note">
+            These are introductory website stories, not live news reports.
+            Live editorial news can be added separately.
+        </p>
+    </div>
+</section>
+
+<section class="newsletter">
+    <span class="eyebrow">WELCOME TO FOOTBALLHUB</span>
+    <h2>Football Never Stops.</h2>
+    <p>Your game. Your teams. Your football community.</p>
+    <a href="#fixtures" class="button button-primary">Explore Football →</a>
+</section>
+
+</main><footer class="footer">
+    <a class="brand" href="/">
+        <span class="brand-icon">⚽</span>
+        <span>Football<span class="brand-accent">Hub</span><small>PRO</small></span>
+    </a><p>Made for football fans around the world.</p>
+<p class="copyright">© <span id="currentYear"></span> FootballHub Pro.</p>
+<p class="footer-disclaimer">
+    Independent football information website. Club names and badges
+    belong to their respective owners. Data availability depends on
+    the configured provider.
+</p>
+
+</footer><script src="/script.js" defer></script></body>
+</html>
